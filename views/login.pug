@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+    //- Shows the following if user is logged in.
+    if currentUser
+        div(class='login-form-cont')
+            div(class='center')
+                h1 Welcome back!
+                ul  
+                    li 
+                        a(href='/message') Message board
+                    li
+                        a(href='/message/create') Post a message
+                    li
+                        a(href='/user/' + currentUser._id) User profile
+                    li
+                        a(href='/user/joinClub') Join the club!
+                    li
+                        a(href='/log-out') Log out
+
+    //- Shows the login form if user is not logged in.
+    else 
+        div(class='login-form-cont')
+            div(class='center')
+                h1 #{title}
+
+                form(method='POST' action='/log-in')
+                    div.form-group
+                        label(for='username')
+                        input#username.form-control(type='text', placeholder='Username' name='username' value=(undefined===user ? '' : user.username))
+                        br
+                        label(for='password') 
+                        input#password.form-control(type='text', placeholder='Password' name='password' value=(undefined===user ? '' : user.password))
+                        br
+                    button.btn.btn-primary(type='submit') Sign in
+        
+                p Not a member?
+                a(href='/user/register') Register now!
+                br
+                a(href='/message') Continue as guest
+
+    if errors
+     ul
+      for error in errors
+         li!= error.msg

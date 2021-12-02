@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    div(class='message-board')
+        div(class='title-container')
+            h1 #{title}
+
+        div(class='message-list')
+            form(method='POST' action='' class='message-form')
+                div.message-form-group
+                    label(for='first_name') First name:
+                    input#first_name.form-control(type='text', name='first_name' value=(undefined===user ? '' : user.first_name))
+                    br
+                    label(for='last_name') Last name:
+                    input#last_name.form-control(type='text', name='last_name' value=(undefined===user ? '' : user.last_name))
+                    br
+                    label(for='username') Username (This will be shown under the messages you've written):
+                    input#username.form-control(type='text', name='username' value=(undefined===user ? '' : user.username))
+                    br
+                    label(for='password') Password:
+                    input#password.form-control(type='text', name='password' value=(undefined===user ? '' : user.password))
+                    br
+                    label(for='confirm_password') Confirm password:
+                    input#confirm_password.form-control(type='text', name='confirm_password')
+                    br
+                    label(for='secret_pass') Admin secret pass-code:
+                    input#secret_pass.form-control(type='text', name='secret_pass')
+                button.btn.btn-primary(type='submit' class='message-button') Register
+
+    if errors
+     ul
+      for error in errors
+         li!= error.msg

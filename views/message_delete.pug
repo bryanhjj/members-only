@@ -1,0 +1,40 @@
+extends layout
+
+block content
+
+  //- if user is logged in and is the message's author.
+  if currentUser
+    if currentUser.username == message.author.username || currentUser.admin == true
+      div(class='message-board')
+        div(class='title-container')
+          h1 #{title}
+
+        div(class='message-list')
+          div(class='simple-message-container')
+            h3 #{message.message_title}
+            br
+            p #{message.message}
+            br
+            p(class='date') #{message.timestamp}
+
+          div(class='delete-confirmation-cont')
+            p Are you sure you want to delete this message?
+            form(method='POST' action='')
+              div.form-group
+                input#messageid.form-control(type='hidden',name='messageid', required='true', value=message._id )
+              button.btn.btn-primary(type='submit') Delete
+  
+    //- logged user is not the author/admin, deny the delete request.
+    else
+      div(class='error-box')
+        div(class='error-title')
+          h1 Error
+        p You are not authorized to delete this message.
+  
+  //- user is not logged in.
+  else 
+    div(class='error-box')
+      div(class='error-title')
+        h1 Error
+      p You must be logged in to view this content.
+      a(href='/') Log in now

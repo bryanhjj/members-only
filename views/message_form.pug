@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  //- display the form for creating a message if the user is logged in.
+  if currentUser
+    div(class='message-board')
+      div(class='title-container')
+        h1 #{title}
+
+      div(class='message-list')
+        form(method='POST' action='' class='message-form')
+          div.message-form-group
+            label(for='message_title') Title:
+            input#message_title.form-control(type='text', name='message_title' value=(undefined===message ? '' : message.message_title))
+            br
+            label(for='message') Description:
+            textarea#message.form-control(type='textarea', name='message') #{undefined===message ? '' : message.message}
+          button.btn.btn-primary(type='submit' class='message-button') Send
+  
+  //- user is not logged in, deny access to message creation.
+  else 
+    div(class='error-box')
+      div(class='error-title')
+        h1 Error
+      p You must be logged in to send/post a message.
+      a(href='/') Log in now
+  
+  if errors
+   ul
+    for error in errors
+     li!= error.msg

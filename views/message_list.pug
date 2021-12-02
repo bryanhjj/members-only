@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(class='message-board')
+    div(class='title-container')
+      h1 Message Board
+  
+    div(class='message-list')
+      ul
+        each m in message
+          div(class='simple-message-container')
+            a(href=m.url class='message-list-titles') #{m.message_title}
+            p #{m.message}
+
+            //- display the message's author and timestamp only if the user is logged in + in the private club.
+            if currentUser && currentUser.membership_status == true
+              p(class='author') Author: #{m.author.username}
+              p(class='date') #{m.timestamp}
+      
+        else
+          p The message board is empty at the moment ):

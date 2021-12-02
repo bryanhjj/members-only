@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  
+  body
+    div(class='nav-bar')
+      ul
+        li 
+          a(href='/' id='logo') 
+            span M
+            | embers
+            span O
+            | nly
+        if currentUser
+          li
+            a(href='/message') Message Board
+          li
+            a(href='/message/create') Create Message
+          li
+            a(href='/user/' + currentUser._id) User Profile
+          li
+            a(href='/user/joinClub') Join club!
+          li(style='float:right')
+            a(href='/log-out' class='log-out') Log out
+
+    div(class='col-sm-10')
+      block content
+  
+  footer
+    div(class='foot')
+      p Made by Bryan.

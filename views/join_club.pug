@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    //- checks if the user is logged in.
+    if currentUser
+        div(class='login-form-cont')
+            div(class='center')
+                h1(class='join-center') #{title}
+                p Join the private club now and enjoy the following benefits: 
+                ul 
+                    li Author and date of messages will be shown to all club members! 
+                    li Bragging rights!
+        
+                h2(class='join-center') Join now only at the cost of your soul!
+
+                form(method='POST' action='')
+                    div.form-group
+                    button.btn.btn-primary(type='submit') Hell yeah! Take my soul!
+    
+    else 
+        div(class='not-logged-user')
+            p You must be logged in to view this content.
+            a(href='/') Log in now

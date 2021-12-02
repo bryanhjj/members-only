@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+  //- checks if the user is logged in.
+  if currentUser
+
+    //- to ensure that only the owner of the account can delete their own account, we check if the current user = target user
+    if currentUser.username === user.username
+      div(class='message-board')
+        div(class='title-container')
+          h1 #{title}
+
+        div(class='message-list')
+          div(class='user-details')
+            h2 Your profile
+            p Username: #{user.username}
+            p First name: #{user.first_name}
+            p Last name: #{user.last_name}
+
+            h2 Message history
+            ul
+              each m in message
+                div(class='simple-message-container' style='border:0')
+                  a(href=m.url) #{m.message_title}
+                  p #{m.message}
+                  p Posted by: #{m.author.username}
+                  p #{m.timestamp}
+    
+            p Are you sure you want to cancel your subscription?
+            form(method='POST' action='')
+              div.form-group
+                input#userid.form-control(type='hidden',name='userid', required='true', value=user._id )
+              button.btn.btn-primary(type='submit' class='unsub-button') Yes
+
+    //- logged user is not the target user.
+    else
+      div(class='error-box')
+        div(class='error-title')
+          h1 Error
+        p You are not authorized for this action.
+  
+  //- user is not logged in.
+  else
+    div(class='error-box')
+      div(class='error-title')
+        h1 Error
+      p You must be logged in to view this content.
+      a(href='/') Log in now

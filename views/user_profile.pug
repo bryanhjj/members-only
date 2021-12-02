@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  div(class='message-board')
+    div(class='title-container')
+      h1 #{user.username}'s profile
+
+    div(class='message-list')
+      div(class='user-details')
+        p First name: #{user.first_name}
+        p Last name: #{user.last_name}
+
+        if user.membership_status == true
+          p You are part of the private club! 
+        else
+          p You have yet to join our private club.
+
+        p Message history: 
+        //- only display the message history to users who are logged in + in the private club, or is the owner.
+        if currentUser
+          if currentUser.username == user.username || currentUser.membership_status == true
+            ul
+              each m in message
+                div(class='simple-message-container' style='border:0')
+                  a(href=m.url) #{m.message_title}
+                  p #{m.message}
+                  p Posted by: #{m.author.username}
+                  p #{m.timestamp}
+              else
+                p There are no messages posted by this user.
+          else
+            p You must join the private club to view this user's message history.
+    
+          //- makes the "cancel sub" & "update profile" available only to the owner of the account.
+          if currentUser.username == user.username
+            div(class='user-bot')
+              p
+                a(href=user.url+'/delete') Cancel subscription
+              p
+                a(href=user.url+'/update') Update profile
+  
+        //- user is not logged in.
+        else 
+          div(class='error-box')
+            div(class='error-title')
+              h1 Error
+            p You must join the private club to view this user's message history.

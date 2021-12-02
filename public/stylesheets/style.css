@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Rubik&display=swap'); /* font-family: 'Rubik', sans-serif; medium */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Rubik&display=swap'); /* font-family: 'Noto Sans', sans-serif; thicc af */
+
+html {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.nav-bar {
+    width: 100%;
+    min-height: 40px;
+    overflow: hidden;
+}
+
+.nav-bar ul {
+    padding-inline-start: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    min-height: 40px;
+    position: fixed;
+    background-color: rgb(29, 155, 240);
+}
+
+.nav-bar li {
+    float: left;
+}
+
+.nav-bar li a {
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+.nav-bar li a:hover {
+    background-color: rgb(79, 172, 235);
+}
+
+#logo {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: white;
+    color: rgb(29, 155, 240);
+}
+
+#logo:hover {
+    background-color: rgb(206, 206, 206);
+}
+
+.foot {
+    width: 100%;
+    min-height: 30px;
+    background-color: rgb(29, 155, 240);
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    color: white;
+    font-size: small;
+}
+
+.login-form-cont {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    min-height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    border: 2px solid lightgrey;
+    border-radius: 25px;
+    width: 20%;
+    text-align: left;
+    padding: 20px 39px;
+}
+
+.center input {
+    width: 95%;
+    height: 18px;
+    padding: 5px;
+    margin-bottom: 8px;
+}
+
+.center button {
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    padding: 0.5em 0.8em;
+    background-color: rgb(29, 155, 240);
+    color: white;
+    border: 0;
+}
+
+.center button:hover {
+    background-color: rgb(79, 172, 235);
+}
+
+.message-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    width: 70%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    margin-bottom: 50px;
+}
+
+.title-container {
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+    text-align: center;
+    color: rgb(29, 155, 240);
+}
+
+.message-list {
+    width: 100%;
+}
+
+.message-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.simple-message-container {
+    border-bottom: 1px solid lightgrey;
+    border-top: 0;
+    padding: 8px;
+}
+
+.message-list-titles {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+}
+
+.simple-message-container p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.date {
+    font-size: small;
+}
+
+.join-center {
+    text-align: center;
+}
+
+.delete-confirmation-cont {
+    border-bottom: 1px solid lightgrey;
+    border-top: 0;
+    text-align: center;
+    padding: 16px;
+}
+
+.delete-confirmation-cont p {
+    margin-top: 0;
+}
+
+.delete-confirmation-cont button {
+    text-align: center;
+    vertical-align: middle;
+    width: 30%;
+    padding: 0.5em 0.8em;
+    background-color: rgb(245, 57, 57);
+    color: white;
+    border: 0;
+}
+
+.error-box {
+    margin: auto;
+    margin-top: 25px;
+    width: 50%;
+    border: 2px solid lightgrey;
+    text-align: center;
+    padding-bottom: 8px;
+    border-radius: 25px;
+}
+
+.error-title {
+    width: 100%;
+    color: rgb(29, 155, 240);
+}
+
+.error-title h1 {
+    margin-top: 8px;
+}
+
+.message-form {
+    border-bottom: 1px solid lightgrey;
+}
+
+.message-button {
+    margin: 8px;
+    text-align: center;
+    vertical-align: middle;
+    width: auto;
+    padding: 0.5em 0.8em;
+    background-color: rgb(29, 155, 240);
+    color: white;
+    border: 0;
+}
+
+.message-form-group {
+    border-top: 0;
+    width: inherit;
+    padding: 8px
+}
+
+.message-form-group input {
+    display: block;
+    width: 99%;
+    height: 25px;
+    border: 1px solid lightgrey;
+}
+
+.message-form-group textarea {
+    display: block;
+    width: 99%;
+    border: 1px solid lightgrey;
+}
+
+.user-details {
+    padding: 8px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.unsub-button {
+    text-align: center;
+    vertical-align: middle;
+    width: 10%;
+    padding: 0.5em 0.8em;
+    background-color: rgb(245, 57, 57);
+    color: white;
+    border: 0;
+}

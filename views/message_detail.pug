@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div(class='message-board')
+    div(class='title-container' style='color:black')
+      h1 #{message.message_title}
+    
+    div(class='message-list')
+      div(class='simple-message-container')
+        p #{message.message}
+
+        //- Displays when the message was posted as well as the message's author if user is logged in + in the private club.
+        if currentUser && currentUser.membership_status == true
+          p(class='date') #{message.timestamp}
+          h3(class='author') Author: #{message.author.username}
+
+    //- Makes "delete message" & "edit message" links available if logged user is the author, and make "delete" available for admins.
+    if currentUser
+      if currentUser.username == message.author.username || currentUser.admin == true
+        div(class='message-list')
+          div(class='simple-message-container')
+            if currentUser.username == message.author.username || currentUser.admin == true
+              p
+                a(href=message.url+'/delete' style='font-weight:normal') Delete message
+            if currentUser.username == message.author.username
+              p
+                a(href=message.url+'/edit' style='font-weight:normal') Edit message

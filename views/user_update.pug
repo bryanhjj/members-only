@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+    //- checks if the user if logged in.
+    if currentUser
+
+        //- displays the following if the logged user is the owner of the account(the target user for the profile update).
+        if currentUser.username === user.username
+            div(class='message-board')
+                div(class='title-container')
+                    h1 #{title}
+
+                div(class='message-list')
+                    form(method='POST' action='' class='message-form')
+                        div.message-form-group
+                            label(for='first_name') First name:
+                            input#first_name.form-control(type='text', name='first_name' value=(undefined===user ? '' : user.first_name))
+                            br
+                            label(for='last_name') Last name:
+                            input#last_name.form-control(type='text', name='last_name' value=(undefined===user ? '' : user.last_name))
+                            br
+                            label(for='username') Username (This is shown under the messages you've written):
+                            input#username.form-control(type='text', name='username' value=(undefined===user ? '' : user.username))
+                            br
+                        button.btn.btn-primary(type='submit' class='message-button') Update
+        
+        //- logged user is not the owner.
+        else 
+            div(class='error-box')
+                div(class='error-title')
+                    h1 Error
+                p You are not authorized to for this action.
+    
+    //- user is not logged in.
+    else
+        div(class='error-box')
+                div(class='error-title')
+                    h1 Error
+                p You must be logged in to view this content.
+                a(href='/') Log in now
+
+    if errors
+     ul
+      for error in errors
+         li!= error.msg

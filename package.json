@@ -1,0 +1,29 @@
+{
+  "name": "members-only-express-node",
+  "version": "1.0.0",
+  "description": "auth practice for express node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app",
+    "devstart": "nodemon ./app",
+    "serverstart": "DEBUG=members-only:* npm run devstart"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.13.0",
+    "http-errors": "^1.8.1",
+    "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.2"
+  }
+}
