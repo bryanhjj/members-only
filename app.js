@@ -3,7 +3,6 @@ const createError = require('http-errors');
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-const MongoStore = require('connect-mongo');
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
@@ -32,7 +31,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Passport setup
-app.use(session({ secret: process.env.SECRET_WORD, resave: false, saveUninitialized: true, store: MongoStore.create({ mongoUrl: 'mongodb://localhost/test-app' }) }));
+app.use(session({ secret: process.env.SECRET_WORD, resave: false, saveUninitialized: true }));
 passport.use(
     new LocalStrategy((username, password, done) => {
       User.findOne({ username: username }, (err, user) => {
